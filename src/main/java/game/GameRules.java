@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 public class GameRules {
 
-    private static final String INIT_MESSAGE = "\nПереместите костяшку. Введите 2, 4, 6 или 8:  ";
-
     private static int enterNumber() {
         Scanner scanner = new Scanner(System.in);
         int enteredNumber = 0;
 
-        System.out.print(INIT_MESSAGE);
+        System.out.print("\nПереместите костяшку. Введите 2, 4, 6 или 8:  ");
 
         if(scanner.hasNextInt()) {
             enteredNumber = scanner.nextInt();
@@ -49,10 +47,8 @@ public class GameRules {
     }
 
     private static void moveNumber(Direction direction) {
-        System.out.println("\nmoving number " + direction.toString() + "...");
-
         GameMechanic.replace(direction);
-
+        System.out.println("\nmoving number " + direction.toString() + "...");
         GameField.displayGameField();
     }
 
