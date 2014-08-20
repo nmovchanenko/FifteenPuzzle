@@ -1,8 +1,16 @@
 package main.java.game;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GameRules {
+
+    private static final int[][] WIN_COMBINATION = {
+            {0, 1, 2, 3},
+            {4, 5, 6, 7},
+            {8, 9, 10, 11},
+            {12, 13, 14, 15}
+    };
 
     private static int enterNumber() {
         Scanner scanner = new Scanner(System.in);
@@ -34,9 +42,6 @@ public class GameRules {
             case 8:
                 moveNumber(Direction.UP);
                 break;
-            /*case 0:
-                stopGame();
-                break;*/
             default:
                 System.out.println("Вы можете ввести только 2, 4, 6 или 8");
                 break;
@@ -49,15 +54,14 @@ public class GameRules {
         GameField.displayGameField();
     }
 
+    private static boolean isCompletedGame() {
+        return Arrays.deepEquals(GameField.getGameField(), WIN_COMBINATION);
+    }
+
     public static void runGame() {
         do play();
-        while (!GameMechanic.isCompletedGame());
+        while (!isCompletedGame());
 
         System.out.println("\nCONGRATS, YOU WIN!");
     }
-
-    /*private static void stopGame() {
-        GameField.setGameFieldToAlmostWinning();
-        GameField.displayGameField();
-    }*/
 }

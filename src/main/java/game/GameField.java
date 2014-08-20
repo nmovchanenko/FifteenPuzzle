@@ -5,14 +5,7 @@ import java.util.Collections;
 
 public class GameField {
 
-    private static int[][] fieldArray = new int[4][4];
-
-    private static final int[][] ALMOST_WIN_COMBINATION = {
-            {1, 0, 2, 3},
-            {4, 5, 6, 7},
-            {8, 9, 10, 11},
-            {12, 13, 14, 15}
-    };
+    private static int[][] gameField = new int[4][4];
 
     private static ArrayList<Integer> list = new ArrayList<Integer>();
 
@@ -20,34 +13,27 @@ public class GameField {
         for (int i = 0; i < 16; i++){
             list.add(i);
         }
-
         Collections.shuffle(list);
     }
 
     private static void fillOutField() {
         randomizeNumbers();
         int listIndex = 0;
-        for (int i = 0; i < fieldArray.length; i++) {
-            for (int j = 0; j < fieldArray[i].length; j++) {
-                fieldArray[i][j] = list.get(listIndex++);
+        for (int i = 0; i < gameField.length; i++) {
+            for (int j = 0; j < gameField[i].length; j++) {
+                gameField[i][j] = list.get(listIndex++);
             }
         }
     }
 
     private static void showNumbers(int number) {
-        if (number == 0) {
-            System.out.print("  |");
-        } else {
-            fitNumberToCell(number);
-        }
+        if (number == 0) System.out.print("  |");
+        else fitNumberToCell(number);
     }
 
     private static void fitNumberToCell(int number) {
-        if (number >= 10) {
-            System.out.print(number + "|");
-        } else {
-            System.out.print(number + " |");
-        }
+        if (number >= 10) System.out.print(number + "|");
+        else System.out.print(number + " |");
     }
 
     public static void initializeGameField() {
@@ -56,18 +42,14 @@ public class GameField {
     }
 
     public static void displayGameField() {
-        for (int i = 0; i < fieldArray.length; i++, System.out.println()) {
-            for (int j = 0; j < fieldArray[i].length; j++) {
-                showNumbers(fieldArray[i][j]);
+        for (int i = 0; i < gameField.length; i++, System.out.println()) {
+            for (int j = 0; j < gameField[i].length; j++) {
+                showNumbers(gameField[i][j]);
             }
         }
     }
 
-    public static int[][] getFieldArray() {
-        return fieldArray;
+    public static int[][] getGameField() {
+        return gameField;
     }
-
-    /*public static void setGameFieldToAlmostWinning() {
-        fieldArray = ALMOST_WIN_COMBINATION;
-    }*/
 }
