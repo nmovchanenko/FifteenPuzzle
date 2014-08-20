@@ -5,23 +5,23 @@ import java.util.Collections;
 
 public class GameField {
 
-    private static int[][] gameField = new int[4][4];
+    private static final int[][] GAME_FIELD = new int[4][4];
 
-    private static ArrayList<Integer> list = new ArrayList<Integer>();
+    private static final ArrayList<Integer> LIST = new ArrayList<>();
 
     private static void randomizeNumbers() {
         for (int i = 0; i < 16; i++){
-            list.add(i);
+            LIST.add(i);
         }
-        Collections.shuffle(list);
+        Collections.shuffle(LIST);
     }
 
     private static void fillOutField() {
         randomizeNumbers();
         int listIndex = 0;
-        for (int i = 0; i < gameField.length; i++) {
-            for (int j = 0; j < gameField[i].length; j++) {
-                gameField[i][j] = list.get(listIndex++);
+        for (int i = 0; i < GAME_FIELD.length; i++) {
+            for (int j = 0; j < GAME_FIELD[i].length; j++) {
+                GAME_FIELD[i][j] = LIST.get(listIndex++);
             }
         }
     }
@@ -42,14 +42,14 @@ public class GameField {
     }
 
     public static void displayGameField() {
-        for (int i = 0; i < gameField.length; i++, System.out.println()) {
-            for (int j = 0; j < gameField[i].length; j++) {
-                showNumbers(gameField[i][j]);
+        for (int i = 0; i < GAME_FIELD.length; i++, System.out.println()) {
+            for (int j = 0; j < GAME_FIELD[i].length; j++) {
+                showNumbers(GAME_FIELD[i][j]);
             }
         }
     }
 
     public static int[][] getGameField() {
-        return gameField;
+        return GAME_FIELD;
     }
 }

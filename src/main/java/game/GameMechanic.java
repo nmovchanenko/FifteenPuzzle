@@ -1,6 +1,6 @@
 package main.java.game;
 
-public class GameMechanic {
+class GameMechanic {
 
     private static void replaceAccordingDirection(int i, int j, Direction direction) {
         switch (direction) {
