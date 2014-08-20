@@ -10,7 +10,6 @@ public class GameMechanic {
     };
 
     private static void replaceAccordingDirection(int i, int j, Direction direction) {
-
         switch (direction) {
             case DOWN:
                 replaceDown(i, j);

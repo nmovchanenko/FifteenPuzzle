@@ -50,9 +50,7 @@ public class GameRules {
 
     private static void moveNumber(Direction direction) {
         System.out.println("\nmoving number " + direction.toString() + "...");
-
         GameMechanic.replace(direction);
-
         GameField.displayGameField();
     }
 
