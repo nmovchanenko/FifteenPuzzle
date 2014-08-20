@@ -4,15 +4,13 @@ import java.util.Scanner;
 
 public class GameRules {
 
-    private static final String INIT_MESSAGE = "\nПереместите костяшку. Введите 2, 4, 6 или 8:  ";
-
     private static int enterNumber() {
         Scanner scanner = new Scanner(System.in);
         int enteredNumber = 0;
 
-        System.out.print(INIT_MESSAGE);
+        System.out.print("\nПереместите костяшку. Введите 2, 4, 6 или 8:  ");
 
-        if(scanner.hasNextInt()) {
+        if (scanner.hasNextInt()) {
             enteredNumber = scanner.nextInt();
         } else {
             System.out.println("Вы можете вводить только числа");
@@ -36,16 +34,13 @@ public class GameRules {
             case 8:
                 moveNumber(Direction.UP);
                 break;
-            case 0:
+            /*case 0:
                 stopGame();
-                break;
+                break;*/
             default:
                 System.out.println("Вы можете ввести только 2, 4, 6 или 8");
                 break;
         }
-    }
-
-    private static void stopGame() {
     }
 
     private static void moveNumber(Direction direction) {
@@ -55,9 +50,14 @@ public class GameRules {
     }
 
     public static void runGame() {
-        do {
-            play();
-        } while (GameMechanic.isCompletedGame());
+        do play();
+        while (!GameMechanic.isCompletedGame());
+
+        System.out.println("\nCONGRATS, YOU WIN!");
     }
 
+    /*private static void stopGame() {
+        GameField.setGameFieldToAlmostWinning();
+        GameField.displayGameField();
+    }*/
 }

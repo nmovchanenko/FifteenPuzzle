@@ -7,6 +7,13 @@ public class GameField {
 
     private static int[][] fieldArray = new int[4][4];
 
+    private static final int[][] ALMOST_WIN_COMBINATION = {
+            {1, 0, 2, 3},
+            {4, 5, 6, 7},
+            {8, 9, 10, 11},
+            {12, 13, 14, 15}
+    };
+
     private static ArrayList<Integer> list = new ArrayList<Integer>();
 
     private static void randomizeNumbers() {
@@ -19,11 +26,10 @@ public class GameField {
 
     private static void fillOutField() {
         randomizeNumbers();
-
-        int count = 0;
+        int listIndex = 0;
         for (int i = 0; i < fieldArray.length; i++) {
             for (int j = 0; j < fieldArray[i].length; j++) {
-                fieldArray[i][j] = list.get(count++);
+                fieldArray[i][j] = list.get(listIndex++);
             }
         }
     }
@@ -60,4 +66,8 @@ public class GameField {
     public static int[][] getFieldArray() {
         return fieldArray;
     }
+
+    /*public static void setGameFieldToAlmostWinning() {
+        fieldArray = ALMOST_WIN_COMBINATION;
+    }*/
 }

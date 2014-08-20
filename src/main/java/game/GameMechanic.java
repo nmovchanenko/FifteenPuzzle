@@ -1,8 +1,10 @@
 package main.java.game;
 
+import java.util.Arrays;
+
 public class GameMechanic {
 
-    private static final int[][] WIN_COMBINATION = {
+    public static final int[][] WIN_COMBINATION = {
             {0, 1, 2, 3},
             {4, 5, 6, 7},
             {8, 9, 10, 11},
@@ -24,7 +26,6 @@ public class GameMechanic {
                 replaceLeft(i, j);
                 break;
             default:
-                showError();
                 break;
         }
     }
@@ -78,18 +79,21 @@ public class GameMechanic {
     }
 
     public static void replace(Direction direction) {
+
+        label:
         for (int i = 0; i < GameField.getFieldArray().length; i++) {
             for (int j = 0; j < GameField.getFieldArray()[i].length; j++) {
                 if (GameField.getFieldArray()[i][j] == 0) {
                     replaceAccordingDirection(i, j, direction);
-                    break;
+                    break label;
                 }
             }
         }
     }
 
     public static boolean isCompletedGame() {
-        return GameField.getFieldArray() != WIN_COMBINATION;
+//        return WIN_COMBINATION.equals(GameField.getFieldArray());
+        return Arrays.deepEquals(GameField.getFieldArray(), WIN_COMBINATION);
     }
 
 }
