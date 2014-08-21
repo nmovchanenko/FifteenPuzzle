@@ -10,7 +10,7 @@ public class GameField {
     private static final ArrayList<Integer> LIST = new ArrayList<>();
 
     private static void randomizeNumbers() {
-        for (int i = 0; i < GAME_FIELD.length * GAME_FIELD.length; i++){
+        for (int i = 0; i < GAME_FIELD.length * GAME_FIELD.length; i++) {
             LIST.add(i);
         }
         Collections.shuffle(LIST);
