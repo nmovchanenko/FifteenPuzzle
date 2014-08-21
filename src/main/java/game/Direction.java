@@ -1,5 +1,5 @@
 package main.java.game;
 
-public enum Direction {
+enum Direction {
     LEFT, RIGHT, UP, DOWN
 }

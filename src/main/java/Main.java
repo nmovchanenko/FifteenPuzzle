@@ -3,8 +3,7 @@ package main.java;
 import main.java.game.GameRules;
 import main.java.game.GameField;
 
-
-public class Main {
+class Main {
 
     public static void main(String[] args) {
         // создать и вывести поле с цифрами
@@ -12,6 +11,5 @@ public class Main {
 
         // играть
         GameRules.runGame();
-
     }
 }

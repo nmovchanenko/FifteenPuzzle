@@ -5,43 +5,36 @@ import java.util.Collections;
 
 public class GameField {
 
-    private static int[][] fieldArray = new int[4][4];
+    private static final int[][] GAME_FIELD = new int[4][4];
 
-    private static ArrayList<Integer> list = new ArrayList<Integer>();
+    private static final ArrayList<Integer> LIST = new ArrayList<>();
 
     private static void randomizeNumbers() {
-        for (int i = 0; i < 16; i++){
-            list.add(i);
+        for (int i = 0; i < GAME_FIELD.length * GAME_FIELD.length; i++){
+            LIST.add(i);
         }
-
-        Collections.shuffle(list);
+        Collections.shuffle(LIST);
     }
 
     private static void fillOutField() {
         randomizeNumbers();
 
-        int count = 0;
-        for (int i = 0; i < fieldArray.length; i++) {
-            for (int j = 0; j < fieldArray[i].length; j++) {
-                fieldArray[i][j] = list.get(count++);
+        int listIndex = 0;
+        for (int i = 0; i < GAME_FIELD.length; i++) {
+            for (int j = 0; j < GAME_FIELD[i].length; j++) {
+                GAME_FIELD[i][j] = LIST.get(listIndex++);
             }
         }
     }
 
     private static void showNumbers(int number) {
-        if (number == 0) {
-            System.out.print("  |");
-        } else {
-            fitNumberToCell(number);
-        }
+        if (number == 0) System.out.print("  |");
+        else fitNumberToCell(number);
     }
 
     private static void fitNumberToCell(int number) {
-        if (number >= 10) {
-            System.out.print(number + "|");
-        } else {
-            System.out.print(number + " |");
-        }
+        if (number >= 10) System.out.print(number + "|");
+        else System.out.print(number + " |");
     }
 
     public static void initializeGameField() {
@@ -50,14 +43,14 @@ public class GameField {
     }
 
     public static void displayGameField() {
-        for (int i = 0; i < fieldArray.length; i++, System.out.println()) {
-            for (int j = 0; j < fieldArray[i].length; j++) {
-                showNumbers(fieldArray[i][j]);
+        for (int i = 0; i < GAME_FIELD.length; i++, System.out.println()) {
+            for (int j = 0; j < GAME_FIELD[i].length; j++) {
+                showNumbers(GAME_FIELD[i][j]);
             }
         }
     }
 
-    public static int[][] getFieldArray() {
-        return fieldArray;
+    public static int[][] getGameField() {
+        return GAME_FIELD;
     }
 }
